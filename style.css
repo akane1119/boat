@@ -1,0 +1,265 @@
+@charset "utf-8";/* 文字コードを指定 */
+@import /* グーグルフォントを入れる(やり方はプリントを参考) */
+url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@700&family=Noto+Sans+JP&display=swap');
+
+* {
+    /* パディングによって外に広がることを防ぐボックス */
+    box-sizing: border-box;
+}
+html {
+    font-family: 'BIZ UDGothic' , sans-serif;
+    font-size: 18px;
+    line-height: 1.8;/* 行間！単位をつけないことでパソコンに任せる */
+}
+body {
+    background: #dbeaff;
+}
+h1,h2,h3 {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a {
+    color: #032559;
+    text-decoration: none;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+img {
+    max-width: 100%;
+}
+figure {
+    margin: 0;
+}
+table {
+    border-collapse: collapse;
+    /* ちゃんとしたフツーの表になる！板チョコみたいにじゃなくて */
+}
+address {
+    font-style: normal;
+    /* アドレスはデフォルメで斜めになってるから、それをノーマルにする */
+}
+
+/* 共通部分のスタイル指定 */
+.header {
+    padding: 0;
+    margin: 0;
+    background: #fff;
+}
+.logo {
+    width: 230px;
+    margin: 0;
+    padding: 20px 0;
+}
+
+/* メインコンテンツ部分 */
+.heading {
+    font-size: 1.8rem;
+    text-align: center;
+    font-family: serif;
+}
+.item {
+    margin: 50px auto;/* 中央配置となる。左右autoなので */
+    padding: 0 10px;
+}
+.item-col {
+    max-width: 300px;
+    margin: 0 auto 50px;
+}
+.item-col-image img {
+    border-radius: 20px;
+}
+.item-col p {
+    margin-bottom: 0;
+}
+.item-col-topic {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #006699;
+    margin-bottom: 0;
+}
+.map {
+    margin: 50px auto;
+    padding: 0 10px;
+}
+.map iframe {
+    width: 100%;
+    /* 横幅すべてにひろげてくれ！(デフォルメは横いっぱいにはならんけん) */
+}
+.table_detail {
+    width: 100%;
+    margin: auto;
+}
+.table_detail tr th,
+.table_detail tr td {
+    padding: 10px;
+    border: 1px dotted #4f4f4f;
+    border-top: none;
+    border-left: none;
+}
+.table_detail tr th {
+    width: 35%;
+}
+.table_detail tr td {
+    width: 65%;
+    border-right: none;
+}
+.table_detail tr:last-child th,
+.table_detail tr:last-child td {
+    border-bottom: none;
+}
+
+/* フッター */
+.footer-container {
+    padding: 50px 0 80px;
+    margin-top: 100px;
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6) url(images/top-image_02.jpg) center center/cover no-repeat;
+    /* center centerで中央配置。/coverによって写真が比率を保ったまま画面にちょうどよく配置される */
+    background-blend-mode: darken;
+    /* ⬆️背景の画像と背景色を暗めにブレンドしてね。 */
+}
+.footer-logo {
+    width: 240px;
+    margin: auto;
+}
+.footer-address {
+    margin: 10px 0;
+}
+.footer-sns {
+    margin: 20px 0;
+    text-align: center;
+}
+i::before {/* ::beforeとは擬似クラス。「iタグの前に」という意味 */
+    font-size: 3rem;
+    color: #ffff00;
+    display: inline-block;
+    margin: 0 15px;
+}
+.copyright {
+    margin: 20px;
+}
+.copyright small {
+    font-size: 0.8rem;
+}
+
+/* ファーストビュー大きな画像 */
+.fview img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;/* 配置した画像をエリア内に”比率を崩さず”びっちりフィットされて表示 */
+}
+
+
+/* ハンバーガーボタン用チェックボックス、完成後noneにする */
+.ck-burger {
+    display: none;/* ラベルを使うためにチェックボックスを使う */
+}
+/* ハンバーガーのボタン */
+.btn-burger {
+    position: absolute;/* すきな場所に置けるようにするための準備 */
+    top: 25px;         /* 🔽場所の指定 */
+    right: 15px;
+    z-index: 2;
+    display: block;/* 幅と高さを指定したいからブロック要素にする */
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    /* パソコンのカーソルを矢印じゃなくて人差し指にする */
+}
+.btn-burger::before {/* ボタンの前に */
+    font-family: "Font Awesome 5 Free";/* 🔽絵面を持ってくる */
+    font-weight: 900;
+    content: "\f0c9";/* バックスラッシュなので注意 */
+    font-size: 2.4rem;
+    line-height: 2.1rem;
+}
+/* メニューが開いている状態のハンバーガーボタンの指定 */
+.ck-burger:checked~.btn-burger::before {/* チェック入っていたのならば〜 */
+    content: "\f00d";/* 絵面を変える */
+    font-size: 2.8rem;
+    line-height: 2rem;
+}
+.ck-burger:checked~.menu .menu-list {/* チェック入っていたのならば〜 */
+    display: block;/* リストをブロック要素で表示してね(表示されていなかった) */
+}
+
+.menu {
+    background: #006699;
+}
+.menu-list { display: none; }
+.menu-list li { border-bottom: dashed 1px #ccc; }
+.menu-list li:last-child { border-bottom: none; }
+.menu-list a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+/* PC対応 (幅768px以上にしてる) */
+@media (min-width: 768px){
+    .header {
+        padding: 40px 0 0;
+    }
+    .logo {
+        width: 360px;
+        margin: auto;
+    }
+    .item {
+        max-width: 980px;/* 最大でも980までしか広がらないようにする */
+        margin-bottom: 100px;
+    }
+    .item-row {
+        display: flex;/* 要素を横並び */
+        flex-wrap: wrap;/* 横いっぱいになったら下の行へ */
+    }
+    .item-col {
+        max-width: none;
+        width: calc(calc(100% / 3) - 40px);
+        /* calcとは四則演算ができるようになる関数。100%とは親要素の100%のことだよん */
+    }
+    .heading {
+        margin-bottom: 50px;
+    }
+    .map {
+        max-width: 980px;
+        margin-bottom: 100px;
+    }
+    .table_detail {
+        width: 70%;
+    }
+
+
+    .btn-burger {
+        display: none;/* アイコンを非表示 */
+    }
+    .ck-burger:checked~.menu .menu-list {
+        display: flex;/* チェックしている時、横並び */
+    }
+    .menu {
+        padding: 10px 0;
+    }
+    .menu-list {
+        display: flex;
+        width: 92%;
+        padding: 0;
+        margin: auto;
+    }
+    .menu-list li {
+        flex-grow: 1;
+        border-right: 1px solid #fff;
+        border-bottom: none;
+    }
+    .menu-list li:first-child {
+        border-left: 1px solid #fff;
+    }
+}
